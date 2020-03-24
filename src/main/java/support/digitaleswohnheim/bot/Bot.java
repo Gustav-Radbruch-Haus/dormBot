@@ -14,7 +14,8 @@ import javax.security.auth.login.LoginException;
 
 public class Bot extends ListenerAdapter{
     public static void main(String[] args) throws LoginException {
-        JDABuilder builder = new JDABuilder("NjkyMTA0NTgwOTQyNzkwODE3.XnprMQ.hNWlwvbwEQzWJ23E9MU61sw-96U");
+        String token = System.getenv("discordBotSecretkey");
+        JDABuilder builder = new JDABuilder(token);
         builder.addEventListeners(new Bot());
         builder.setActivity(Activity.watching("PornHub Premium 4K"));
         builder.build();
