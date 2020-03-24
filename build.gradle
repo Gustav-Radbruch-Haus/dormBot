@@ -1,0 +1,24 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.3.71'
+    id 'com.github.johnrengelman.shadow' version '4.0.4'
+}
+
+group 'grh-hamburg.de'
+version '1.0-SNAPSHOT'
+
+version '1.0'
+def jdaVersion = '4.1.1_101'
+
+sourceCompatibility = targetCompatibility = 1.8
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile "net.dv8tion:JDA:$jdaVersion"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+}
+
+compileJava.options.encoding = 'UTF-8'
