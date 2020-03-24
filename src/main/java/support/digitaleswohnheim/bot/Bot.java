@@ -4,10 +4,10 @@ import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.entities.Activity;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
 import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import support.digitaleswohnheim.supportbot.SupportBot;
 
 import javax.annotation.Nonnull;
 import javax.security.auth.login.LoginException;
@@ -25,17 +25,8 @@ public class Bot extends ListenerAdapter{
     @Override
     public void onPrivateMessageReceived(@Nonnull PrivateMessageReceivedEvent event) {
         System.out.println("Received a message:\n\t" + event.getMessage().getContentDisplay());
-        if (event.getAuthor().isBot()) return;
-        // We don't want to respond to other bot accounts, including ourself
-        Message message = event.getMessage();
-        String content = message.getContentRaw();
-        // getContentRaw() is an atomic getter
-        // getContentDisplay() is a lazy getter which modifies the content for e.g. console view (strip discord formatting)
-        if (content.equals("!ping"))
-        {
-            MessageChannel channel = event.getChannel();
-            channel.sendMessage("Du hast mir private geschrieben! Ich habe aber keine Antwort für dich :shrug: !").queue(); // Important to call .queue() on the RestAction returned by sendMessage(...)
-        }
+        SupportBot sBot = new SupportBot();
+        sBot.handlePrivateMessage(event);
     }
 
     @Override
@@ -50,6 +41,11 @@ public class Bot extends ListenerAdapter{
         {
             MessageChannel channel = event.getChannel();
             channel.sendMessage("Pong!").queue(); // Important to call .queue() on the RestAction returned by sendMessage(...)
+        }
+        else if (content.equals("!help"))
+        {
+            MessageChannel channel = event.getChannel();
+            channel.sendMessage("Ich kann dir helfen, aber nur wenn du mir eine Privatnachricht schreibst!").queue(); // Important to call .queue() on the RestAction returned by sendMessage(...)
         }
         else if (content.equals("!peters"))
         {
