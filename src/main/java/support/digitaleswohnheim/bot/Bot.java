@@ -24,7 +24,7 @@ public class Bot extends ListenerAdapter{
 
     @Override
     public void onPrivateMessageReceived(@Nonnull PrivateMessageReceivedEvent event) {
-        System.out.println("Received a message:\n\t" + event.getMessage().getContentDisplay());
+        //System.out.println("Received a message:\n\t" + event.getMessage().getContentDisplay());
         SupportBot sBot = new SupportBot();
         sBot.handlePrivateMessage(event);
     }
@@ -57,6 +57,6 @@ public class Bot extends ListenerAdapter{
             MessageChannel channel = event.getChannel();
             channel.sendMessage("Du kannst kein Java!").queue(); // Important to call .queue() on the RestAction returned by sendMessage(...)
         }
-        System.out.println("Received a guild message:\n\t" + event.getMessage().getContentDisplay());
+        //System.out.println("Received a guild message:\n\t" + event.getMessage().getContentDisplay());
     }
 }
