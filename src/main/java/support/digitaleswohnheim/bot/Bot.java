@@ -17,7 +17,7 @@ public class Bot extends ListenerAdapter {
 		builder.addEventListeners(new DormAssigner());
 		builder.addEventListeners(new WelcomeMessage());
 		builder.addEventListeners(new SupportBot());
-		builder.setActivity(Activity.watching("PornHub Premium 8K"));
+		builder.setActivity(Activity.watching("PornHub Premium 16K"));
 		builder.build().awaitReady();
 		System.out.println("Connected to Discord");
 	}
