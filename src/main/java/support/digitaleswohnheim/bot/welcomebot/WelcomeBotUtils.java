@@ -67,7 +67,7 @@ public final class WelcomeBotUtils {
 		Message message = event.getMessage();
 		String content = message.getContentRaw();
 		if (content.startsWith(PREFIX)) {
-			String command = content.substring(1).strip();
+			String command = content.substring(1).trim();
 			return command;
 		}
 		return null;
