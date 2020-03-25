@@ -1,14 +1,16 @@
-package support.digitaleswohnheim.supportbot;
+package support.digitaleswohnheim.bot.supportbot;
 
 import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.events.message.priv.PrivateMessageReceivedEvent;
+import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import javax.annotation.Nonnull;
 
-public class SupportBot {
-    public void handlePrivateMessage(@Nonnull PrivateMessageReceivedEvent event){
-        if (event.getAuthor().isBot()) return;
+public class SupportBot extends ListenerAdapter {
+	
+	@Override
+	public void onPrivateMessageReceived(@Nonnull PrivateMessageReceivedEvent event) {
         // We don't want to respond to other bot accounts, including ourself
         Message message = event.getMessage();
         String content = message.getContentRaw();

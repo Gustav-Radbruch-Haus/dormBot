@@ -1,4 +1,4 @@
-package support.digitaleswohnheim.supportbot;
+package support.digitaleswohnheim.bot.supportbot;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
