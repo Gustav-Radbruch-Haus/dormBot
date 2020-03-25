@@ -25,13 +25,13 @@ compileJava.options.encoding = 'UTF-8'
 
 
 jar {
-    baseName = 'SpotifyDiscoveryBot'
+    baseName = 'DormBot'
     version = '1.0'
     
     manifest {
         attributes(
-          'Main-Class': 'spotify.main.Main',
-      	  'Class-Path': '.'
+          'Main-Class': 'support.digitaleswohnheim.bot.Bot',
+          'Class-Path': '.'
         )
     }
 }
