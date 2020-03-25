@@ -33,7 +33,7 @@ public class DormAssigner extends ListenerAdapter {
 		Dorm.of(691067380712865792L, "Hagenbeckstra\u00DFe"),
 		Dorm.of(691067427022176267L, "Hammerbrook"),
 		Dorm.of(691067459943268362L, "Harburg"),
-		Dorm.of(691067570853511171L, "Harburger-H\u00E4user"),
+		Dorm.of(691067570853511171L, "Harburger-H\u00E4user", "hah"),
 		Dorm.of(691067620409212928L, "Helmut-Schmidt-Studierendenhaus"),
 		Dorm.of(691067671843831889L, "Kiwittsmoor"),
 		Dorm.of(691067709173268571L, "Lokstedt"),
@@ -55,6 +55,7 @@ public class DormAssigner extends ListenerAdapter {
 		dormsMap = new TreeMap<>();
 		for (Dorm d : DORMS) {
 			dormsMap.put(d.getAbbreviation(), d);
+			System.out.println(d);
 		}
 	}
 
