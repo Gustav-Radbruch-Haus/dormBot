@@ -67,25 +67,27 @@ public class DormAssigner extends ListenerAdapter {
 	 */
 	@Override
 	public void onGuildMessageReceived(@Nonnull GuildMessageReceivedEvent event) {
-		if (!event.getAuthor().isBot() && WelcomeBotUtils.isWelcomeChannel(event)) {
-			String command = WelcomeBotUtils.extractCommand(event);
-			if (command != null) {
-				switch (command) {
-					case "dorms":
-						printDormsList(event);
-						break;
-					case "friend":
-						handleFriendAssignment(event);
-						break;
-					default:
-						Dorm dorm = dormsMap.get(command);
-						if (dorm != null) {
-							handleDormAssignment(event, dorm);
-						}
-						break;
+		try {
+			if (!event.getAuthor().isBot() && WelcomeBotUtils.isWelcomeChannel(event)) {
+				String command = WelcomeBotUtils.extractCommand(event);
+				if (command != null) {
+					switch (command) {
+						case "dorms":
+							printDormsList(event);
+							break;
+						case "friend":
+							handleFriendAssignment(event);
+							break;
+						default:
+							Dorm dorm = dormsMap.get(command);
+							if (dorm != null) {
+								handleDormAssignment(event, dorm);
+							}
+							break;
+					}
 				}
 			}
-		}
+		} catch (Exception e) {}
 	}
 
 	/**

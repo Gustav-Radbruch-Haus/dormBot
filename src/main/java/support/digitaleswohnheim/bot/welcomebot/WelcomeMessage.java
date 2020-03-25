@@ -1,5 +1,7 @@
 package support.digitaleswohnheim.bot.welcomebot;
 
+import javax.annotation.Nonnull;
+
 import net.dv8tion.jda.api.events.guild.member.GuildMemberJoinEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
@@ -17,11 +19,13 @@ public class WelcomeMessage extends ListenerAdapter {
 	 * welcome message with the user's name into the #welcome channel.
 	 */
 	@Override
-	public void onGuildMemberJoin(GuildMemberJoinEvent event) {
-		WelcomeBotUtils.addRoleToMember(event.getGuild(), event.getMember(), WelcomeBotUtils.NEWUSER_ROLE_ID);
+	public void onGuildMemberJoin(@Nonnull GuildMemberJoinEvent event) {
+		try {
+			WelcomeBotUtils.addRoleToMember(event.getGuild(), event.getMember(), WelcomeBotUtils.NEWUSER_ROLE_ID);
 
-		String joinedUserName = WelcomeBotUtils.getAuthorName(event);
-		String welcomeMessage = String.format(WELCOME_MESSAGE_TEMPLATE, joinedUserName);
-		WelcomeBotUtils.getWelcomeChannel(event).sendMessage(welcomeMessage);
+			String joinedUserName = WelcomeBotUtils.getAuthorName(event);
+			String welcomeMessage = String.format(WELCOME_MESSAGE_TEMPLATE, joinedUserName);
+			WelcomeBotUtils.getWelcomeChannel(event).sendMessage(welcomeMessage);
+		} catch (Exception e) {}
 	}
 }
