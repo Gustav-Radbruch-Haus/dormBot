@@ -11,13 +11,14 @@ import support.digitaleswohnheim.bot.welcomebot.WelcomeMessage;
 
 public class Bot extends ListenerAdapter {
 	private static final String TOKEN = System.getenv("discordBotSecretkey");
+	private static final String ACTIVITY = System.getenv("currentActivity");
 	
 	public static void main(String[] args) throws LoginException, InterruptedException {
 		JDABuilder builder = new JDABuilder(TOKEN);
 		builder.addEventListeners(new DormAssigner());
 		builder.addEventListeners(new WelcomeMessage());
 		builder.addEventListeners(new SupportBot());
-		builder.setActivity(Activity.watching("PornHub Premium 16K"));
+		builder.setActivity(Activity.watching(ACTIVITY));
 		builder.build().awaitReady();
 		System.out.println("Connected to Discord");
 	}
