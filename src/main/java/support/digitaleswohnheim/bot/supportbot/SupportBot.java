@@ -10,6 +10,8 @@ import java.util.regex.Pattern;
 
 public class SupportBot extends ListenerAdapter {
 
+    public final static String PREFIX = System.getenv("commandChar");
+
     @Override
     public void onPrivateMessageReceived(@Nonnull PrivateMessageReceivedEvent event) {
         // We don't want to respond to other bot accounts, including ourself
@@ -18,14 +20,14 @@ public class SupportBot extends ListenerAdapter {
         MessageChannel channel = event.getChannel();
         // getContentRaw() is an atomic getter
         // getContentDisplay() is a lazy getter which modifies the content for e.g. console view (strip discord formatting)
-        if (content.equals("<help")) {
+        if (content.equals(PREFIX+"help")) {
             channel.sendMessage("Ich kann dir helfen! Wähle zwischen den folgenden möglichkeiten.").queue(); // Important to call .queue() on the RestAction returned by sendMessage(...)
-        } else if (content.equals("<dau")) {
+        } else if (content.equals(PREFIX+"dau")) {
             channel.sendMessage("Du hast dich als DAU (Dümmster anzunehmender User) geoutet! Kontaktiere einen der @Admins oder @Mods auf dem Server. Vielleicht können die dir helfen.").queue();
-        } else if (content.equals("<formatted")) {
+        } else if (content.equals(PREFIX+"formatted")) {
             channel.sendMessage(":shrug:").queue();
-        } else if (Pattern.matches("<setactivity.*", content)) {
-            String activity = content.replace("<setactivity ", "");
+        } else if (Pattern.matches(PREFIX+"setactivity.*", content)) {
+            String activity = content.replace(PREFIX+"setactivity ", "");
             channel.sendMessage("new activty:" + activity).queue();
             //super.setActivity
         }

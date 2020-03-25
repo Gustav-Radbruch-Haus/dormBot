@@ -16,7 +16,7 @@ public final class WelcomeBotUtils {
 	/**
 	 * The prefix used for all commands.
 	 */
-	public final static String PREFIX = "!";
+	public final static String PREFIX = System.getenv("commandChar");
 
 	/**
 	 * The ID of the channel our new users get put into.
