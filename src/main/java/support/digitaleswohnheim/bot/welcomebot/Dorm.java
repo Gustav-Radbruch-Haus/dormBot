@@ -45,7 +45,7 @@ public class Dorm implements Comparable<Dorm> {
 			sb.append(split[2].charAt(0));
 			abbreviation = sb.toString();
 		}
-		return abbreviation.toLowerCase().strip();
+		return abbreviation.toLowerCase().trim();
 	}
 
 	/**
