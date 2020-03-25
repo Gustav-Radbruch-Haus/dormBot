@@ -22,3 +22,16 @@ dependencies {
 }
 
 compileJava.options.encoding = 'UTF-8'
+
+
+jar {
+    baseName = 'SpotifyDiscoveryBot'
+    version = '1.0'
+    
+    manifest {
+        attributes(
+          'Main-Class': 'spotify.main.Main',
+      	  'Class-Path': '.'
+        )
+    }
+}
